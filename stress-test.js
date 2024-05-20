@@ -32,13 +32,7 @@ export const options = {
 
 export default function () {
     const url = 'http://localhost:8080/medico/1'
-    
-    // send a post request and save response as a variable
-    const res = http.get(url);
-
-    // Log the request body
-    //console.log(res.body);
-
+    http.get(url);
     sleep(1);
 }
 
