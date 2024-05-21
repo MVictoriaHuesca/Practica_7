@@ -23,7 +23,7 @@ export const options = {
     ],
     thresholds: {
         http_req_failed: [{
-            threshold: 'rate <= 0.01',
+            threshold: 'rate < 0.01',
             abortOnFail: true,
         }]
     }

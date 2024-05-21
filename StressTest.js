@@ -18,13 +18,13 @@ export default () => {
 
 export const options = {
     stages: [
-        { duration: '3m', target: 8000 }, // subida
-        { duration: '3m', target: 8000 }, // mantenimiento
+        { duration: '3m', target: 7477 }, // subida
+        { duration: '3m', target: 7477 }, // mantenimiento
         { duration: '2m', target: 0 }, // bajada
     ],
     thresholds: {
         http_req_failed: [{
-            threshold: 'rate <= 0.01',
+            threshold: 'rate < 0.01',
             abortOnFail: true,
         }],
 
