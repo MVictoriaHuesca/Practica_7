@@ -1,3 +1,8 @@
+/*
+ * @autor1 = Eduardo García Rivas
+ * @autor2 = María Victoria Huesca Peláez
+ */
+
 import http from 'k6/http';
 import { sleep } from 'k6';
 import { check } from 'k6';
@@ -17,15 +22,14 @@ export default () => {
 };
 
 export const options = {
-    scenarios: {
-        spike: {
-            executor: 'ramping-arrival-rate', // rampa!!
-            preAllocatedVUs: 1000, //VUs alocados inicialmente
-            maxVUs: 1e7, //VUs maximo
-            stages: [
-                { duration: '2m', target: 4000 }, // rampa muy rápida
-                { duration: '2m', target: 0 }, // baja muy rapid0
-            ],
-        }
+    stages: [
+        { duration: '2m', target: 3926 }, // rampa muy rápida
+        { duration: '2m', target: 0 }, // baja muy rapid0
+    ],
+    thresholds: {
+        http_req_failed: [{
+            threshold: 'rate < 0.5',
+            abortOnFail: true,
+        }]
     }
 };
