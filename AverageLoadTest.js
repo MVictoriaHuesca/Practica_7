@@ -16,15 +16,20 @@ export default () => {
     sleep(1);
 };
 
-
 export const options = {
     stages: [
-        { duration: '10m', target: 100000 }, // just slowly ramp-up to a HUGE load
+        { duration: '3m', target: 5000 }, // subida
+        { duration: '3m', target: 5000 }, // mantenimiento
+        { duration: '2m', target: 0 }, // bajada
     ],
     thresholds: {
         http_req_failed: [{
             threshold: 'rate <= 0.01',
             abortOnFail: true,
-        }]
+        }],
+
+        http_req_duration: ['avg < 1000'],
+
+        checks: ["rate>=0.95"]
     }
 };

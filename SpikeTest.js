@@ -16,15 +16,16 @@ export default () => {
     sleep(1);
 };
 
-
 export const options = {
-    stages: [
-        { duration: '10m', target: 100000 }, // just slowly ramp-up to a HUGE load
-    ],
-    thresholds: {
-        http_req_failed: [{
-            threshold: 'rate <= 0.01',
-            abortOnFail: true,
-        }]
+    scenarios: {
+        spike: {
+            executor: 'ramping-arrival-rate', // rampa!!
+            preAllocatedVUs: 1000, //VUs alocados inicialmente
+            maxVUs: 1e7, //VUs maximo
+            stages: [
+                { duration: '2m', target: 4000 }, // rampa muy rápida
+                { duration: '2m', target: 0 }, // baja muy rapid0
+            ],
+        }
     }
 };
