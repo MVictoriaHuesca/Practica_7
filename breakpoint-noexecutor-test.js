@@ -20,7 +20,7 @@ export const options = {
     }],
     thresholds: {
         http_req_failed: [{             //no debe haber peticioneas fallidas
-            threshold: 'rate<=0.01',
+            threshold: 'rate<0.01',
             abortOnFail: true,          //abortar el test si no se cumple
         }],
     }
